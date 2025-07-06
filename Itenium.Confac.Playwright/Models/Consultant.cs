@@ -18,7 +18,7 @@ public class Consultant
     Slug = $"{firstName}-{name}".ToLowerInvariant();
     Email = Slug.Replace("-", ".") + "@itenium.be";
     Active = active;
-    Type = "Consultant";
+    Type = "consultant";
   }
 
   //  "audit" : {
