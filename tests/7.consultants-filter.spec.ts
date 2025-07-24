@@ -1,14 +1,12 @@
 import { test, expect } from '../helpers/ConfacFixtures';
 
 test.describe('consultants filter', () => {
-  test.beforeAll(async ({ db }) => {
-    const count = await db.collection('consultants').count();
+  test.beforeEach(async ({ page, db }) => {
+    const count = await db.collection('consultants').countDocuments();
     if (count === 0) {
       await db.collection('consultants').insertMany(defaultConsultants);
     }
-  });
 
-  test.beforeEach(async ({ page }) => {
     await page.goto('/consultants');
   });
 
@@ -20,7 +18,7 @@ test.describe('consultants filter', () => {
 
   });
 
-  test.afterAll(async ({ db }) => {
+  test.afterEach(async ({ db }) => {
     // await db.dropCollection('consultants');
   });
 });
